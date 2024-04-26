@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import RenderComponents from "../cs_components/render-components";
-import { getPageRes, getPOCPage } from "../helper";
+import { getPageRes } from "../helper";
 import Skeleton from "react-loading-skeleton";
 import { useLivePreviewCtx } from "../context/live-preview-context-provider";
 import { EntryProps } from "../typescript/components";
@@ -18,8 +18,6 @@ export default function Home({ entry }:{entry:({page, blogPost}:EntryProps)=> vo
 
   async function fetchData() {
     try {
-      const test = await getPOCPage();
-      console.log(test)
       const result = await getPageRes(entryUrl);
       console.log(result)
       !result && setError(true);

@@ -94,7 +94,7 @@ export const getPOCPage = async (): Promise<POCPage> => {
     jsonRtePath: undefined,
     referenceFieldPath: ["sections", "sections.columns", "sections.categories", "sections.slides", "sections.tiles"],
   })) as POCPage[][];
-  // liveEdit &&
-  //   response[0].forEach((entry) => addEditableTags(entry, "blog_post", true));
+  liveEdit &&
+    response[0].forEach((entry) => addEditableTags(entry, "sub_banner", true));
   return response[0][0];
 };

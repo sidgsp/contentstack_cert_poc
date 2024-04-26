@@ -20,9 +20,12 @@ import CategoryBanner from "./components/category-banner";
 import SubBanner from "./components/sub-banner";
 import Carousel from "./components/carousel";
 import TileArray from "./components/tile-array";
+import { useLivePreviewCtx } from "./context/live-preview-context-provider";
 
 function App() {
   const [page, setPage] = useState();
+
+  const lpTs = useLivePreviewCtx();
 
   async function fetchPage() {
     try {
@@ -37,7 +40,7 @@ function App() {
 
   useEffect(() => {
     fetchPage();
-  }, []);
+  }, [lpTs]);
 
   if (!page) {
     return <p>loading ...</p>
@@ -68,6 +71,7 @@ function App() {
   );
 }
 
+// cs-academy-siddharth-1711395038-c4c9c.vercel.app
 // function App() {
 //   const [getEntry, setEntry] = useState({} as EntryProps );
 

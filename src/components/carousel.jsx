@@ -11,13 +11,13 @@ function Slide({ data }) {
           <p className="brand">MARTEX</p>
           <h3 className="ld-sg-heading-slide">{data.label}</h3>
           <ul className="product-slide-pricing">
-            { data.markdown_price
+            { data.unit.markdownPrice
               ? <>
-                  <li className="markdown-price"><p>{data.markdown_price}</p></li>
-                  <li className="original-price"><p>{data.original_price}</p></li>
+                  <li className="markdown-price"><p>{`${data.unit.markdownPrice}`}</p></li>
+                  <li className="original-price"><p>{`${data.unit.originalPrice}`}</p></li>
                 </>
               
-              : <li className="price"><p>{data.original_price}</p></li>
+              : <li className="price"><p>{`${data.unit.originalPrice}`}</p></li>
             }
           </ul>
         </a>
