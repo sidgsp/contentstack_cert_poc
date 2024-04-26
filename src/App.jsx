@@ -30,7 +30,7 @@ function App() {
   async function fetchPage() {
     try {
       const response = await getPOCPage();
-      console.log(response);
+      // console.log(response);
 
       setPage({...response});
     } catch (error) {
