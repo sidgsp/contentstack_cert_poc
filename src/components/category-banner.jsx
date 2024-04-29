@@ -2,7 +2,7 @@ import React from "react";
 
 function CategoryBanner({ data }) {
   return (
-    <div className="desktopLinks">
+    <div className="desktopLinks" {...data.$.title}>
       <div className="subCatLinks">
         <ul>
           { data.categories.map((category) => (

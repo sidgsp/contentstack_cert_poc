@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { LivePreviewProvider } from "./context/live-preview-context-provider";
+import "@contentstack/live-preview-utils/dist/main.css"; 
 import reportWebVitals from "./reportWebVitals";
 import "./styles.css";
 

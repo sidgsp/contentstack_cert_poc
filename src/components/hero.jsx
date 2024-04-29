@@ -2,7 +2,7 @@ import React from "react";
 
 function Hero({ data }) {
     return (
-      <div className="main-banner">
+      <div className="main-banner" style={{"marginTop": "50px"}} {...data.$.title}>
         <div className="mkt-hero">
           <div className="mkt-left">
             <a href={data.columns[0].cta_link} data-category="HmHero" data-action="Shop Now" data-label="Banner:Hero1:Appliance Savings Event" className="product-banner">

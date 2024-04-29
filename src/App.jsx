@@ -51,19 +51,21 @@ function App() {
       <Header />
       <main>
         <div className="html-slot-container">
-          <Hero data={page.sections[0]} />
-          <CategoryBanner data={page.sections[1]} />
-          <SubBanner data={page.sections[2]} />
-          <Carousel data={page.sections[3]} />
-          <TileArray data={page.sections[4]} />
-          <Carousel data={page.sections[5]} />
-          <TileArray data={page.sections[6]} />
-          <Carousel data={page.sections[7]} />
-          <TileArray data={page.sections[8]} />
-          <Carousel data={page.sections[9]} />
-          <SubBanner data={page.sections[10]} />
-          <SubBanner data={page.sections[11]} />
-          <Carousel data={page.sections[12]} />
+          { page.sections.map((section) => {
+            switch (section._content_type_uid) {
+              case "hero":
+                return <Hero data={section} />
+              case "category_banner":
+                return <CategoryBanner data={section} />
+              case "sub_banner":
+                return <SubBanner data={section} />
+              case "carousel":
+                return <Carousel data={section} />
+              case "tile_array":
+                return <TileArray data={section} />
+              default:
+            }
+          })}
         </div>
       </main>
       <Footer />

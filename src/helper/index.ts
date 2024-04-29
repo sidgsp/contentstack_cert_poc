@@ -88,13 +88,34 @@ export const getBlogPostRes = async (
   return response[0];
 };
 
-export const getPOCPage = async (): Promise<POCPage> => {
+
+export const getPOCPage = async () => {
   const response = (await getEntry({
     contentTypeUid: "poc_page",
     jsonRtePath: undefined,
     referenceFieldPath: ["sections", "sections.columns", "sections.categories", "sections.slides", "sections.tiles"],
-  })) as POCPage[][];
+  }));
   liveEdit &&
-    response[0].forEach((entry) => addEditableTags(entry, "sub_banner", true));
+    // @ts-ignore: poc
+    response[0].forEach((entry) => entry.sections.map((section) => {
+      addEditableTags(section, section._content_type_uid, true);
+      switch (section._content_type_uid) {
+        case "hero":
+          // @ts-ignore: poc
+          section.columns.map((column) => addEditableTags(column, column._content_type_uid, true));
+          break;
+        case "carousel":
+          // @ts-ignore: poc
+          section.slides.map((slide) => addEditableTags(slide, slide._content_type_uid, true));
+          break;
+        case "tile_array":
+          // @ts-ignore: poc
+          section.tiles.map((tile) => addEditableTags(tile, tile._content_type_uid, true));
+          break;
+        default:
+      }
+
+    }));
+  // @ts-ignore: poc
   return response[0][0];
 };
