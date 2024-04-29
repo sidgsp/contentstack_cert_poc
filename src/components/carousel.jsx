@@ -2,7 +2,7 @@ import React from "react";
 
 function Slide({ data }) {
   return (
-    <div className="slick-slide" {...data.$.title}>
+    <div className="slick-slide" {...data.$?.title}>
       <a href={data.link} className="product-image-link">
         <img className="product-image" data-src="https://www.londondrugs.com/dw/image/v2/AAJI_PRD/on/demandware.static/-/Sites-londondrugs-master/default/dwd76b6c71/products/L1226369/large/L1226369.JPG?sw=270&amp;sh=330&amp;sm=fit" src={data.image.url} alt="Martex Dish Cloth Set - 2pk - Assorted" data-loaded="true" />
       </a>
@@ -32,7 +32,7 @@ function Slide({ data }) {
 function Carousel({ data }) {
   return (
     <div className="banner-carousel-wrapper">
-      <h2 className="ld-sg-heading-carousel" {...data.$.label}>
+      <h2 className="ld-sg-heading-carousel" {...data.$?.label}>
         <a href="https://www.londondrugs.com/clearance/" style={{'fontSize':'100%'}} title="See all Last Chance">{data.label}</a>
       </h2>
       <div className="banner-carousel-body">

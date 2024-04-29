@@ -2,7 +2,7 @@ import React from "react";
 
 function Tile({ data }) {
   return (
-    <div className="content-item" {...data.$.title}>
+    <div className="content-item" {...data.$?.title}>
       <div className="tile">
         <div className="tile-body">
           <a style={{'pointerEvents': 'none'}} href={data.cta_link} data-category="home-banner-3" data-action="Shop Now" data-label="banner:tiles:Dec08-2023-HEA-PhilipsToothbrush">
