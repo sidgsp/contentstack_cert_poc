@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./cs_components/layout";
-import Home from "./pages/index";
-import Blog from "./pages/blog";
+// import Home from "./pages/index";
+// import Blog from "./pages/blog";
 import BlogPost from "./pages/blog-post";
 import Error from "./pages/error";
 import "./styles/third-party.css";
@@ -13,14 +13,20 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { EntryProps } from "./typescript/components";
 import { POCPage } from "./typescript/pages";
 import { getPOCPage } from "./helper";
+import Home from "./pages/home";
+import Blog from "./pages/blog";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Hero from "./components/hero";
-import CategoryBanner from "./components/category-banner";
-import SubBanner from "./components/sub-banner";
-import Carousel from "./components/carousel";
-import TileArray from "./components/tile-array";
+import TextArticle from "./components/text-article";
+import TileArticle from "./components/tile-article";
+import PartnerSection from "./components/partner-sections";
+import Merchandise from "./components/merch";
+import BlogCarousel from "./components/blog-carousel";
+import BlogSection from "./components/blog-section";
 import { useLivePreviewCtx } from "./context/live-preview-context-provider";
+
+
 
 function App() {
   const [page, setPage] = useState();
@@ -47,30 +53,80 @@ function App() {
   }
 
   return (
-    <div className="pt_storefront">
-      <Header />
-      <main>
-        <div className="html-slot-container">
-          { page.sections.map((section) => {
-            switch (section._content_type_uid) {
-              case "hero":
-                return <Hero data={section} />
-              case "category_banner":
-                return <CategoryBanner data={section} />
-              case "sub_banner":
-                return <SubBanner data={section} />
-              case "carousel":
-                return <Carousel data={section} />
-              case "tile_array":
-                return <TileArray data={section} />
-              default:
-            }
-          })}
-        </div>
-      </main>
-      <Footer />
+    <div className="App">
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          {/* <Route path="/:page" element={<Home entry={getPageRes} />} /> */}
+          <Route path="/blog" />
+          <Route
+            path="/blog/:blogId"
+            element={<Blog />}
+          />
+          {/* <Route path="/404" element={<Error />}></Route>
+          <Route path="*" element={<Error />}></Route> */}
+        </Route>
+      </Routes>
     </div>
   );
+
+  // home
+  // return (
+  //   <div className="index-page">
+  //     <Header />
+  //     <main className="main">
+  //       <div className="slice-container">
+  //         <Hero page_type={"home"} />
+  //         <TextArticle />
+  //         <TileArticle />
+  //         <PartnerSection />
+  //         <TileArticle />
+  //         <Merchandise />
+  //         <BlogCarousel /> 
+  //       </div>
+  //     </main>
+  //     <Footer />
+  //   </div>
+  // );
+  // return (
+  //   <div className="index-page">
+  //     <Header />
+  //     <main className="main">
+  //       <div className="slice-container">
+  //         <Hero page_type={"blog"} />
+  //         <BlogSection tags highlightTop />
+  //         <BlogSection />
+  //       </div>
+  //     </main>
+  //     <Footer />
+  //   </div>
+  // );
+
+  // return (
+  //   <div className="pt_storefront">
+  //     <Header />
+  //     <main>
+  //       <div className="html-slot-container">
+  //         { page.sections.map((section) => {
+  //           switch (section._content_type_uid) {
+  //             case "hero":
+  //               return <Hero data={section} />
+  //             case "category_banner":
+  //               return <CategoryBanner data={section} />
+  //             case "sub_banner":
+  //               return <SubBanner data={section} />
+  //             case "carousel":
+  //               return <Carousel data={section} />
+  //             case "tile_array":
+  //               return <TileArray data={section} />
+  //             default:
+  //           }
+  //         })}
+  //       </div>
+  //     </main>
+  //     <Footer />
+  //   </div>
+  // );
 }
 
 // cs-academy-siddharth-1711395038-c4c9c.vercel.app

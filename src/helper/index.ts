@@ -88,7 +88,6 @@ export const getBlogPostRes = async (
   return response[0];
 };
 
-
 export const getPOCPage = async () => {
   const response = (await getEntry({
     contentTypeUid: "poc_page",
@@ -119,3 +118,28 @@ export const getPOCPage = async () => {
   // @ts-ignore: poc
   return response[0][0];
 };
+
+export const getCertPage = async (entryUrl: string) => {
+  const response = (await getEntryByUrl({
+    contentTypeUid: "certification_page",
+    entryUrl,
+    referenceFieldPath: ["sections.blogs.blog"],
+    jsonRtePath: ["sections.text_article.text"],
+  }));
+
+
+  // @ts-ignore: poc
+  return response[0];
+}
+
+export const getBlogPage = async (entryUrl: string) => {
+  const response = (await getEntryByUrl({
+    contentTypeUid: "blog",
+    entryUrl,
+    referenceFieldPath: undefined,
+    jsonRtePath: ["blog_section.text", "blog_section.highlight"],
+  }));
+
+  // @ts-ignore: poc
+  return response[0];
+}
